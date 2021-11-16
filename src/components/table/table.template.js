@@ -15,10 +15,22 @@ function toColumn(col, index) {
         ${col}
         <div class="col-resize" data-resize="col"></div>
     </div>
+
+function toCell(content) {
+    return `
+    <div class="cell" contenteditable>${content}</div>
+    `
+}
+
+function toColumn(col) {
+    return `
+    <div class="column">${col}</div>
+
     `
 }
 
 function createRow(index, content) {
+
     const resize = index ? `<div class="row-resize" data-resize="row"></div>` : ''
     return `
     <div class="row" data-type="resizable">
@@ -26,6 +38,9 @@ function createRow(index, content) {
             ${index ? index : ''}
             ${resize}
         </div>
+    return `
+    <div class="row">
+        <div class="row-info">${index ? index : ''}</div>
         <div class="row-data">${content}</div>
     </div>
 `
@@ -53,8 +68,14 @@ export function createTable(rowsCount = 15) {
             .map(toCell)
             .join('')
 
+
         rows.push(createRow(i + 1, cell))
     }
 
     return rows.join('')
+
+        rows.push(createRow(i + 1, cell))
+    }
+
+    return rows.join(' ')
 }

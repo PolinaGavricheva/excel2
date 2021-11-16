@@ -40,6 +40,7 @@ class Dom {
         return this
     }
 
+
     get data() {
         return this.$el.dataset
     }
@@ -63,6 +64,7 @@ class Dom {
                 this.$el.style[key] = styles[key]
             })
     }
+
 }
 
 export function $(selector) {
